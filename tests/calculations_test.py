@@ -68,3 +68,38 @@ def test_get_nth_fibonacci_one():
 
 #     # Assert
 #     assert result == 89
+
+
+class TestAreaOfCircle:
+    def test_area_of_circle_positive(self):
+        """Test area calculation with positive radius."""
+        assert area_of_circle(5) == pytest.approx(78.54, abs=0.01)
+    
+    def test_area_of_circle_zero(self):
+        """Test area calculation with zero radius."""
+        assert area_of_circle(0) == 0
+    
+    def test_area_of_circle_negative(self):
+        """Test that negative radius raises ValueError."""
+        with pytest.raises(ValueError, match="Radius cannot be negative"):
+            area_of_circle(-5)
+
+
+class TestGetNthFibonacci:
+    def test_fibonacci_zero(self):
+        """Test fibonacci(0)."""
+        assert get_nth_fibonacci(0) == 0
+    
+    def test_fibonacci_one(self):
+        """Test fibonacci(1)."""
+        assert get_nth_fibonacci(1) == 1
+    
+    def test_fibonacci_sequence(self):
+        """Test fibonacci sequence."""
+        assert get_nth_fibonacci(6) == 8
+        assert get_nth_fibonacci(10) == 55
+    
+    def test_fibonacci_negative(self):
+        """Test that negative n raises ValueError."""
+        with pytest.raises(ValueError, match="n cannot be negative"):
+            get_nth_fibonacci(-1)
